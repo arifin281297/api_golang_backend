@@ -1,7 +1,6 @@
 package main
 
 import (
-	"go-backend/config"
 	"go-backend/controllers"
 	"go-backend/middleware"
 	"go-backend/routes"
@@ -18,7 +17,12 @@ func main() {
 	r.POST("/login", controllers.LoginHandler)
 
 	// Connect database & migrate
-	config.ConnectDatabase()
+	// config.ConnectDatabase()
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "API hidup 🚀",
+		})
+	})
 
 	// Register routes
 	api := r.Group("/api")
