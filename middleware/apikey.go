@@ -3,13 +3,10 @@ package middleware
 import (
 	"net/http"
 
-	"os"
-
 	"github.com/gin-gonic/gin"
 )
 
-// const API_KEY = "4p1K3y60L4ng"
-var API_KEY = os.Getenv("API_KEY")
+const API_KEY = "4p1K3y60L4ng"
 
 func APIKeyAuth() gin.HandlerFunc {
 	return func(c *gin.Context) {
