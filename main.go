@@ -5,6 +5,7 @@ import (
 	"go-backend/controllers"
 	"go-backend/middleware"
 	"go-backend/routes"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -27,7 +28,11 @@ func main() {
 	routes.UserGroupRoutes(api)
 
 	// routes.UserRoutes(r)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 
 	// Run server
-	r.Run(":8080")
+	r.Run(":" + port)
 }
